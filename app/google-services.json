@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "930761014024",
+    "firebase_url": "https://chatapp-5e996.firebaseio.com",
+    "project_id": "chatapp-5e996",
+    "storage_bucket": "chatapp-5e996.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930761014024:android:8d6ad44750daee4c1f0abd",
+        "android_client_info": {
+          "package_name": "com.alicja.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930761014024-2vi5ue3pkpme4ggvkfunbopehq7kcvik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBObZS2zEf408geQR6jYXuhb2_wWL0Bd_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930761014024-2vi5ue3pkpme4ggvkfunbopehq7kcvik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
