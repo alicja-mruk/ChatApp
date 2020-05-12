@@ -1,67 +1,68 @@
 package com.alicja.chatapp.ui
 
+import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.alicja.chatapp.R
-import com.google.firebase.auth.FirebaseAuth
+import com.alicja.chatapp.data.firebase.FirebaseAuthRegisterHelper
+import com.alicja.chatapp.delegators.StartActivityHelper
+import com.alicja.chatapp.delegators.Toaster
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
+    private var selectedPhotoUri:Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
         registerBtn.setOnClickListener{
-           performRegister()
+            val username = usernameRegister.text.toString()
+            val email = emailTextRegister.text.toString()
+            val password =  passwordTextRegister.text.toString()
+            val firebaseAuthRegisterHelper = FirebaseAuthRegisterHelper(this, email , password, selectedPhotoUri, username)
+            firebaseAuthRegisterHelper.performRegister()
         }
 
-        alreadyHaveAnAccountBtn.setOnClickListener{
-           startLoginActivity()
+        val startActivityHelper = StartActivityHelper (this)
+            alreadyHaveAnAccountBtn.setOnClickListener{
+                startActivityHelper.startLoginActivity()
+        }
+
+        selectPhotoRegisterBtn.setOnClickListener{
+            startImageIntent()
         }
 
     }
 
-    private fun emailOrPasswordIsEmpty() : Boolean{
-        val email = emailTextRegister.text.toString()
-        val password = passwordTextRegister.text.toString()
-        return email.isEmpty() || password.isEmpty()
-    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-    private fun startLoginActivity(){
-        Toast.makeText(this, "Registered successfully", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun resetFields(){
-        emailTextRegister.setText("")
-        passwordTextRegister.setText("")
-    }
-
-    private fun performRegister(){
-        if(emailOrPasswordIsEmpty()){
-            Toast.makeText(this, "Enter correct data and try again", Toast.LENGTH_SHORT).show()
-            return
+        if( requestCode == 0 && resultCode == Activity.RESULT_OK && data != null ){
+            setImage(data)
         }
-
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailTextRegister.text.toString(), passwordTextRegister.text.toString())
-            .addOnCompleteListener{
-                if(!it.isSuccessful) return@addOnCompleteListener
-                //if register succesful
-                Log.d("Register", "Successfully created user with uid: ${it.result!!.user!!.uid}")
-                startLoginActivity()
-            }
-
-            .addOnFailureListener{
-                Log.d("Register", "Failed to create user ${it.message}")
-                Toast.makeText(this, "Error occured. Try again", Toast.LENGTH_SHORT).show()
-            }
     }
 
+    private fun startImageIntent(){
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type="image/*"
+        startActivityForResult(intent, 0)
+    }
+
+    private fun setImage(data: Intent?){
+        Log.d("Register", "Photo was selected")
+
+        if (data != null) selectedPhotoUri = data.data
+        try {
+            selectPhotoRegisterBtn.setImageURI(selectedPhotoUri)
+        } catch (e: Exception) {
+            Toaster.toast(this, "Failed to upload image")
+            e.printStackTrace()
+        }
+    }
 }
 
 

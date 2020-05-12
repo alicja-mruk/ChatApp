@@ -18,7 +18,7 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/selectPhotoRegister"
+            android:id="@+id/selectPhotoRegisterBtn"
             android:clickable="true"
             android:focusable="true"
             android:layout_marginTop="50dp"
@@ -26,6 +26,8 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
+            app:civ_border_width="0.5dp"
+            app:civ_border_color="@color/colorPrimaryDark"
             android:src="@drawable/select_photo"
             android:contentDescription="@string/photo" />
 
@@ -35,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
-                android:id="@+id/userNameRegister"
+                android:id="@+id/usernameRegister"
                 android:padding="15dp"
                 android:textSize="20sp"
                 android:background="@drawable/edit_text"
