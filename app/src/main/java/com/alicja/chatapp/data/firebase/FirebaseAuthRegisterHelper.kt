@@ -26,10 +26,9 @@ class FirebaseAuthRegisterHelper (private val context: Context, private val emai
                 Toaster.toast(context, "Registered successfully")
 
                 val firebaseDatabaseHelper = FirebaseDatabaseHelper(selectedPhotoUri, username)
-
                 firebaseDatabaseHelper.uploadImageToFirebaseStorage()
 
-                val startActivityHelper = StartActivityHelper (context)
+                val startActivityHelper = StartActivityHelper(context)
                 startActivityHelper.startLoginActivity()
             }
 
@@ -42,5 +41,6 @@ class FirebaseAuthRegisterHelper (private val context: Context, private val emai
     private fun isEmailOrPasswordEmpty() : Boolean{
         return email.isEmpty() || password.isEmpty()
     }
+
 
 }

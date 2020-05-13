@@ -13,3 +13,15 @@ l
 <app/src/main/java/com/alicja/chatapp/delegators/Constants.kt,2\1\211a2e1a31632876cd975f49a4bee82b6e23ffa4
 h
 8app/src/main/java/com/alicja/chatapp/ui/LoginActivity.kt,a\c\ac454a2ee7afd967878efd74394d04cbc7f0230c
+>
+app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
+b
+2app/src/main/java/com/alicja/chatapp/model/User.kt,1\a\1ab0bcf7e811956b987cbf014437000b35fd3fef
+|
+Lapp/src/main/java/com/alicja/chatapp/data/firebase/FirebaseDatabaseHelper.kt,5\c\5c1f1d392bea221aff8d3dd544b1e1e726f307ec
+v
+Fapp/src/main/java/com/alicja/chatapp/delegators/StartActivityHelper.kt,7\4\7410922c304bcaeede9967ad1b57eadd363bc745
+j
+:app/src/main/java/com/alicja/chatapp/delegators/Toaster.kt,1\a\1a2e71ebde54f673d7b5205fdb050988f1e4624d
+€
+Papp/src/main/java/com/alicja/chatapp/data/firebase/FirebaseAuthRegisterHelper.kt,7\a\7a418041a7560f73d243e54415f0cd04125bcafc
