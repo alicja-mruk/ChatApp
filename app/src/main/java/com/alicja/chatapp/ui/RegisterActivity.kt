@@ -13,11 +13,17 @@ import com.alicja.chatapp.delegators.Toaster
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
+
+    companion object{
+        const val TAG = "RegisterActivity"
+    }
+
     private var selectedPhotoUri:Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        supportActionBar?.hide()
 
         registerBtn.setOnClickListener{
             val username = usernameRegister.text.toString()
@@ -27,9 +33,9 @@ class RegisterActivity : AppCompatActivity() {
             firebaseAuthRegisterHelper.performRegister()
         }
 
-        val startActivityHelper = StartActivityHelper (this)
+        val openLoginActivity = StartActivityHelper (this)
             alreadyHaveAnAccountBtn.setOnClickListener{
-                startActivityHelper.startLoginActivity()
+                openLoginActivity.startLoginActivity()
         }
 
         selectPhotoRegisterBtn.setOnClickListener{
@@ -53,7 +59,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setImage(data: Intent?){
-        Log.d("Register", "Photo was selected")
+        Log.d(TAG, "Photo was selected")
 
         if (data != null) selectedPhotoUri = data.data
         try {

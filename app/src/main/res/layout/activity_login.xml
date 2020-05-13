@@ -83,7 +83,7 @@
                 android:textColor="@android:color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/firstRegister"
+                android:text="@string/first_register"
                 android:textAlignment="center"
                 android:clickable="true"
                 android:focusable="true" />

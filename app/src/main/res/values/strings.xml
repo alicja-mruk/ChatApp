@@ -15,6 +15,8 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="login">Login</string>
-    <string name="firstRegister">You don\'t have an account?</string>
+    <string name="first_register">You don\'t have an account?</string>
     <string name="username">Username</string>
+    <string name="sign_out">Sign out</string>
+    <string name="new_message">New Message</string>
 </resources>
