@@ -17,7 +17,7 @@ class LatestMessagesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_messages)
-
+        title = ""
         isUserLoggedIn()
     }
 
@@ -38,13 +38,15 @@ class LatestMessagesActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.menu_new_message->{
+                val openNewMessagesActivity = StartActivityHelper(this)
+                openNewMessagesActivity.startNewMessagesActivity()
 
             }
 
             R.id.menu_sign_out->{
                 FirebaseAuth.getInstance().signOut()
-                val openRegisterActivity = StartActivityHelper(this)
-                openRegisterActivity.startRegisterActivity()
+                val openLoginActivity = StartActivityHelper(this)
+                openLoginActivity.startLoginActivity()
             }
         }
 
