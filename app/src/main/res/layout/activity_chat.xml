@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/darker_gray"
+    tools:context=".ui.message.ChatActivity"
+    android:weightSum="2">
+<androidx.recyclerview.widget.RecyclerView
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    android:id="@+id/recyclerView_chat"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="2"/>
+<LinearLayout
+    android:background="@android:color/white"
+    android:padding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:weightSum="2">
+        <EditText
+            android:layout_marginStart="5dp"
+            android:id="@+id/messageTextChat"
+            android:background="@android:color/transparent"
+            android:layout_weight="1.7"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="5dp"
+            android:hint="@string/enter_message" />
+        <Button
+            android:id="@+id/sendChatBtn"
+            android:background="@drawable/ic_send"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+</LinearLayout>
+
+</LinearLayout>

@@ -5,6 +5,8 @@ import android.net.Uri
 import android.util.Log
 import com.alicja.chatapp.delegators.StartActivityHelper
 import com.alicja.chatapp.delegators.Toaster
+import com.alicja.chatapp.ui.message.LatestMessagesActivity
+import com.alicja.chatapp.ui.registerlogin.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -28,8 +30,8 @@ class FirebaseAuthRegisterHelper (private val context: Context, private val emai
                 val firebaseDatabaseHelper = FirebaseDatabaseHelper(selectedPhotoUri, username)
                 firebaseDatabaseHelper.uploadImageToFirebaseStorage()
 
-                val startActivityHelper = StartActivityHelper(context)
-                startActivityHelper.startLoginActivity()
+                val startActivityHelper = StartActivityHelper(context, LoginActivity::class.java)
+                startActivityHelper.startActivityWithClearTaskFlag()
             }
 
             .addOnFailureListener{

@@ -1,4 +1,4 @@
-package com.alicja.chatapp.ui
+package com.alicja.chatapp.ui.registerlogin
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alicja.chatapp.R
 import com.alicja.chatapp.data.firebase.FirebaseAuthLoginHelper
 import com.alicja.chatapp.delegators.StartActivityHelper
+import com.alicja.chatapp.ui.message.LatestMessagesActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -24,13 +25,11 @@ class LoginActivity : AppCompatActivity() {
         loginBtn.setOnClickListener{
             val email = emailTextLogin.text.toString()
             val password = passwordTextLogin.text.toString()
-            val firebaseAuthLoginHelper = FirebaseAuthLoginHelper(this, email, password)
-            firebaseAuthLoginHelper.performLogin()
+            FirebaseAuthLoginHelper(this, email, password).performLogin()
         }
 
         goToRegisterBtn.setOnClickListener{
-           val openRegisterActivity = StartActivityHelper(this)
-            openRegisterActivity.startRegisterActivity()
+          StartActivityHelper(this, RegisterActivity::class.java).startActivityWithClearTaskFlag()
         }
 
     }

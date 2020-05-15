@@ -4,7 +4,8 @@ import android.content.Context
 import android.util.Log
 import com.alicja.chatapp.delegators.StartActivityHelper
 import com.alicja.chatapp.delegators.Toaster
-import com.alicja.chatapp.ui.LoginActivity
+import com.alicja.chatapp.ui.message.LatestMessagesActivity
+import com.alicja.chatapp.ui.registerlogin.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -25,8 +26,8 @@ class FirebaseAuthLoginHelper (private val context: Context, private val email: 
                 Log.d(LoginActivity.TAG, "Successfully logged as uid: ${it.result!!.user!!.uid}")
                 Toaster.toast(context , "Successfully logged in")
 
-                val startActivity = StartActivityHelper (context)
-                startActivity.startLatestMessagesActivity()
+                val startActivity = StartActivityHelper (context, LatestMessagesActivity::class.java)
+                startActivity.startActivityWithClearTaskFlag()
             }
 
             .addOnFailureListener{

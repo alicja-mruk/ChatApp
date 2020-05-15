@@ -1,4 +1,4 @@
-package com.alicja.chatapp.ui
+package com.alicja.chatapp.ui.message
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.alicja.chatapp.R
 import com.alicja.chatapp.delegators.StartActivityHelper
+import com.alicja.chatapp.ui.registerlogin.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LatestMessagesActivity : AppCompatActivity() {
@@ -21,15 +22,6 @@ class LatestMessagesActivity : AppCompatActivity() {
         isUserLoggedIn()
     }
 
-    private fun isUserLoggedIn(){
-        val uid = FirebaseAuth.getInstance().uid
-
-        if (uid == null){
-            val openLoginActivity = StartActivityHelper (this)
-            openLoginActivity.startLoginActivity()
-        }
-    }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -38,18 +30,27 @@ class LatestMessagesActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.menu_new_message->{
-                val openNewMessagesActivity = StartActivityHelper(this)
-                openNewMessagesActivity.startNewMessagesActivity()
-
+                StartActivityHelper(this, NewMessagesActivity::class.java).startNewActivity()
             }
 
             R.id.menu_sign_out->{
-                FirebaseAuth.getInstance().signOut()
-                val openLoginActivity = StartActivityHelper(this)
-                openLoginActivity.startLoginActivity()
+                signOut()
             }
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun isUserLoggedIn(){
+        val uid = FirebaseAuth.getInstance().uid
+
+        if (uid == null){
+            StartActivityHelper(this, LoginActivity::class.java).startActivityWithClearTaskFlag()
+        }
+    }
+
+    private fun signOut(){
+        FirebaseAuth.getInstance().signOut()
+        StartActivityHelper(this, LoginActivity::class.java).startActivityWithClearTaskFlag()
     }
 }

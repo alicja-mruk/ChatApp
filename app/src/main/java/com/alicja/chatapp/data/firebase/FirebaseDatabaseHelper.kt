@@ -3,11 +3,10 @@ package com.alicja.chatapp.data.firebase
 import android.net.Uri
 import android.util.Log
 import com.alicja.chatapp.model.User
-import com.alicja.chatapp.ui.RegisterActivity
+import com.alicja.chatapp.ui.registerlogin.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
 

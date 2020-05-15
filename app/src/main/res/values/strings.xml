@@ -19,4 +19,6 @@
     <string name="username">Username</string>
     <string name="sign_out">Sign out</string>
     <string name="new_message">New Message</string>
+    <string name="enter_message">Enter Message</string>
+    <string name="send">Send</string>
 </resources>

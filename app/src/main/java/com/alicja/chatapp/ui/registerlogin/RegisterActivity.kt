@@ -1,4 +1,4 @@
-package com.alicja.chatapp.ui
+package com.alicja.chatapp.ui.registerlogin
 
 import android.app.Activity
 import android.content.Intent
@@ -10,6 +10,7 @@ import com.alicja.chatapp.R
 import com.alicja.chatapp.data.firebase.FirebaseAuthRegisterHelper
 import com.alicja.chatapp.delegators.StartActivityHelper
 import com.alicja.chatapp.delegators.Toaster
+import com.alicja.chatapp.ui.message.LatestMessagesActivity
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -26,16 +27,11 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         registerBtn.setOnClickListener{
-            val username = usernameRegister.text.toString()
-            val email = emailTextRegister.text.toString()
-            val password =  passwordTextRegister.text.toString()
-            val firebaseAuthRegisterHelper = FirebaseAuthRegisterHelper(this, email , password, selectedPhotoUri, username)
-            firebaseAuthRegisterHelper.performRegister()
+            register()
         }
 
-        val openLoginActivity = StartActivityHelper (this)
             alreadyHaveAnAccountBtn.setOnClickListener{
-                openLoginActivity.startLoginActivity()
+                StartActivityHelper (this, LoginActivity::class.java).startActivityWithClearTaskFlag()
         }
 
         selectPhotoRegisterBtn.setOnClickListener{
@@ -51,7 +47,13 @@ class RegisterActivity : AppCompatActivity() {
             setImage(data)
         }
     }
-
+    private fun register(){
+        val username = usernameRegister.text.toString()
+        val email = emailTextRegister.text.toString()
+        val password =  passwordTextRegister.text.toString()
+        val firebaseAuthRegisterHelper = FirebaseAuthRegisterHelper(this, email , password, selectedPhotoUri, username)
+        firebaseAuthRegisterHelper.performRegister()
+    }
     private fun startImageIntent(){
         val intent = Intent(Intent.ACTION_PICK)
         intent.type="image/*"

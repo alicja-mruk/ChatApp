@@ -23,3 +23,7 @@ j
 :app/src/main/java/com/alicja/chatapp/delegators/Toaster.kt,1\a\1a2e71ebde54f673d7b5205fdb050988f1e4624d
 €
 Papp/src/main/java/com/alicja/chatapp/data/firebase/FirebaseAuthRegisterHelper.kt,7\a\7a418041a7560f73d243e54415f0cd04125bcafc
+v
+Fapp/src/main/java/com/alicja/chatapp/delegators/adapter/UserItemRow.kt,0\4\04c788fa388361cece7ec8b470fe3c16c0742ec2
+n
+>app/src/main/java/com/alicja/chatapp/ui/NewMessagesActivity.kt,c\3\c32387134a61104fd22a0ce6ccfc21812669e8b9

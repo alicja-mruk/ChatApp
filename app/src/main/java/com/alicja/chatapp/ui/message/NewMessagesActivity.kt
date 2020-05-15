@@ -1,10 +1,11 @@
-package com.alicja.chatapp.ui
+package com.alicja.chatapp.ui.message
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.alicja.chatapp.R
-import com.alicja.chatapp.delegators.adapter.UserItemRow
+import com.alicja.chatapp.delegators.StartActivityHelper
+import com.alicja.chatapp.delegators.adapter.rows.UserItem
 import com.alicja.chatapp.model.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -30,6 +31,12 @@ class NewMessagesActivity : AppCompatActivity() {
 
     }
 
+    private fun adapterOnItemClickListener(adapter :GroupAdapter<ViewHolder>){
+        adapter.setOnItemClickListener{item, view->
+           startChatActivity()
+        }
+    }
+
     private fun fetch() {
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
@@ -39,9 +46,14 @@ class NewMessagesActivity : AppCompatActivity() {
                     Log.d(TAG, "Fetching users from the database:  $it")
                     val user = it.getValue(User::class.java)
                     if(user !=null){
-                        adapter.add(UserItemRow(user))
+                        adapter.add(
+                            UserItem(
+                                user
+                            )
+                        )
                     }
                 }
+                adapterOnItemClickListener(adapter)
                 recyclerView_newMessage.adapter = adapter
             }
 
@@ -49,5 +61,9 @@ class NewMessagesActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+    }
+    private fun startChatActivity(){
+        StartActivityHelper(this, ChatActivity::class.java).startNewActivity()
+        finish()
     }
 }
