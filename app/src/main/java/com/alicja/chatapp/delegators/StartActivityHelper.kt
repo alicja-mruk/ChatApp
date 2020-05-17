@@ -3,6 +3,8 @@ package com.alicja.chatapp.delegators
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import com.alicja.chatapp.delegators.adapter.rows.UserItem
+import com.alicja.chatapp.model.User
 import com.alicja.chatapp.ui.message.LatestMessagesActivity
 import com.alicja.chatapp.ui.registerlogin.LoginActivity
 import com.alicja.chatapp.ui.message.NewMessagesActivity
@@ -18,6 +20,12 @@ class StartActivityHelper (private val context: Context, private val className :
          fun startNewActivity() {
             val intent = Intent(context, className)
             context.startActivity(intent)
+        }
+
+        fun startNewChatActivity(key: String , item : UserItem) {
+        val intent = Intent(context, className)
+            intent.putExtra(key, item.user)
+        context.startActivity(intent)
         }
 
 

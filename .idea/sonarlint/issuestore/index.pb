@@ -7,10 +7,6 @@ H
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-k
-;app/src/main/java/com/alicja/chatapp/ui/RegisterActivity.kt,2\2\22a0f61c5818d09bb5cdee040253245722ee2e02
-h
-8app/src/main/java/com/alicja/chatapp/ui/LoginActivity.kt,a\c\ac454a2ee7afd967878efd74394d04cbc7f0230c
 >
 app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
 b
@@ -23,7 +19,19 @@ j
 :app/src/main/java/com/alicja/chatapp/delegators/Toaster.kt,1\a\1a2e71ebde54f673d7b5205fdb050988f1e4624d
 €
 Papp/src/main/java/com/alicja/chatapp/data/firebase/FirebaseAuthRegisterHelper.kt,7\a\7a418041a7560f73d243e54415f0cd04125bcafc
+x
+Happ/src/main/java/com/alicja/chatapp/delegators/adapter/rows/UserItem.kt,c\c\ccd8ba09738fb08279cae07e87e78d5611e672d2
+}
+Mapp/src/main/java/com/alicja/chatapp/data/firebase/FirebaseAuthLoginHelper.kt,a\c\ac83c549173f8aa3b4a4949f4578a586b3a627b1
+y
+Iapp/src/main/java/com/alicja/chatapp/ui/registerlogin/RegisterActivity.kt,1\d\1d87aae5bd926566b92009e5cc1a89126c26ed75
 v
-Fapp/src/main/java/com/alicja/chatapp/delegators/adapter/UserItemRow.kt,0\4\04c788fa388361cece7ec8b470fe3c16c0742ec2
-n
->app/src/main/java/com/alicja/chatapp/ui/NewMessagesActivity.kt,c\3\c32387134a61104fd22a0ce6ccfc21812669e8b9
+Fapp/src/main/java/com/alicja/chatapp/ui/registerlogin/LoginActivity.kt,b\2\b2c4e0801303b8a282e8a6542f587299a933af3a
+y
+Iapp/src/main/java/com/alicja/chatapp/ui/message/LatestMessagesActivity.kt,c\5\c56249f44d889f293c49cf129c29d34ddab7ea91
+v
+Fapp/src/main/java/com/alicja/chatapp/ui/message/NewMessagesActivity.kt,3\a\3a909928398d0171d8d9e4df7fd1a48ebf6a647c
+o
+?app/src/main/java/com/alicja/chatapp/ui/message/ChatActivity.kt,c\9\c9d535fe30fece6c4955c48f258ef8e32bee31a8
+x
+Happ/src/main/java/com/alicja/chatapp/delegators/adapter/rows/ChatItem.kt,5\4\54bd140567ec0935a89d43087c773029ed41411e

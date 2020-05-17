@@ -20,6 +20,7 @@ class NewMessagesActivity : AppCompatActivity() {
 
     companion object{
         const val TAG = "NewMessagesActivity"
+        const val USER_KEY = "username"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +34,8 @@ class NewMessagesActivity : AppCompatActivity() {
 
     private fun adapterOnItemClickListener(adapter :GroupAdapter<ViewHolder>){
         adapter.setOnItemClickListener{item, view->
-           startChatActivity()
+            val userItem = item as UserItem
+           startChatActivity(userItem)
         }
     }
 
@@ -47,9 +49,7 @@ class NewMessagesActivity : AppCompatActivity() {
                     val user = it.getValue(User::class.java)
                     if(user !=null){
                         adapter.add(
-                            UserItem(
-                                user
-                            )
+                            UserItem(user)
                         )
                     }
                 }
@@ -62,8 +62,8 @@ class NewMessagesActivity : AppCompatActivity() {
             }
         })
     }
-    private fun startChatActivity(){
-        StartActivityHelper(this, ChatActivity::class.java).startNewActivity()
+    private fun startChatActivity(userItem: UserItem) {
+        StartActivityHelper(this, ChatActivity::class.java).startNewChatActivity(USER_KEY, userItem)
         finish()
     }
 }

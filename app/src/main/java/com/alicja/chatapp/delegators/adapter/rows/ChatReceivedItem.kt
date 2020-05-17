@@ -4,7 +4,7 @@ import com.alicja.chatapp.R
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 
-class ChatItem : Item<ViewHolder> () {
+class ChatReceivedItem : Item<ViewHolder> () {
 
     override fun getLayout(): Int {
         return R.layout.chat_received_row
