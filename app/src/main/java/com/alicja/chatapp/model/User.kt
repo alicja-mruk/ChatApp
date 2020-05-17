@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 
 
-class User(val uid:String?, val username: String?, val profileImageUrl: String?) : Parcelable{
+class User(val uid:String?, val username: String?, val photoUrl: String?) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -15,7 +15,7 @@ class User(val uid:String?, val username: String?, val profileImageUrl: String?)
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(uid)
         parcel.writeString(username)
-        parcel.writeString(profileImageUrl)
+        parcel.writeString(photoUrl)
     }
 
     override fun describeContents(): Int {

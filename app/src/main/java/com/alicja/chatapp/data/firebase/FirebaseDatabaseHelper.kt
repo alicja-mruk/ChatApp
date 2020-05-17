@@ -2,6 +2,7 @@ package com.alicja.chatapp.data.firebase
 
 import android.net.Uri
 import android.util.Log
+import com.alicja.chatapp.delegators.Toaster
 import com.alicja.chatapp.model.User
 import com.alicja.chatapp.ui.registerlogin.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -10,27 +11,34 @@ import com.google.firebase.storage.FirebaseStorage
 import java.util.*
 
 
-class FirebaseDatabaseHelper (private val selectedPhotoUri: Uri?, private val username: String) {
+class FirebaseDatabaseHelper (private var selectedPhotoUri: Uri?, private val username: String) {
 
     fun uploadImageToFirebaseStorage() {
-        if (selectedPhotoUri == null) return
+        if(selectedPhotoUri == null){
+            return
+        }
 
         val filename = UUID.randomUUID().toString()
         val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
 
-        ref.putFile(selectedPhotoUri)
-            .addOnSuccessListener {
-                Log.d(RegisterActivity.TAG, "Successfully uploaded image: ${it.metadata?.path}")
 
-                ref.downloadUrl.addOnSuccessListener {
-                    Log.d(RegisterActivity.TAG, "File location ${it}")
+        selectedPhotoUri.let {
+            if (it != null) {
+                ref.putFile(it)
+                    .addOnSuccessListener {
+                        Log.d(RegisterActivity.TAG, "Successfully uploaded image: ${it.metadata?.path}")
 
-                    saveUserToFirebaseDatabase(it.toString())
-                }
+                        ref.downloadUrl.addOnSuccessListener {
+                            Log.d(RegisterActivity.TAG, "File location ${it}")
+
+                            saveUserToFirebaseDatabase(it.toString())
+                        }
+                    }
+                    .addOnFailureListener{
+                        Log.d(RegisterActivity.TAG, "Failure while uploading an image: ${it.printStackTrace()}")
+                    }
             }
-            .addOnFailureListener{
-                Log.d(RegisterActivity.TAG, "Failure while uploading an image: ${it.printStackTrace()}")
-            }
+        }
     }
 
     private fun saveUserToFirebaseDatabase(profileImageUrl: String){

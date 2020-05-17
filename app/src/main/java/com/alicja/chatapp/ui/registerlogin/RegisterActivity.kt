@@ -51,6 +51,7 @@ class RegisterActivity : AppCompatActivity() {
         val username = usernameRegister.text.toString()
         val email = emailTextRegister.text.toString()
         val password =  passwordTextRegister.text.toString()
+
         val firebaseAuthRegisterHelper = FirebaseAuthRegisterHelper(this, email , password, selectedPhotoUri, username)
         firebaseAuthRegisterHelper.performRegister()
     }

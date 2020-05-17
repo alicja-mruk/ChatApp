@@ -14,7 +14,9 @@ class UserItem (val user: User): Item<ViewHolder>(){
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.usernameTextViewNewMessageActivity.text = user.username
-        Picasso.get().load(user.profileImageUrl).into(viewHolder.itemView.photoNewMessageActivity);
+        if (user.photoUrl != null && user.photoUrl.isNotEmpty()) {
+            Picasso.get().load(user.photoUrl).into(viewHolder.itemView.photoNewMessageActivity)
+        }
 
     }
 

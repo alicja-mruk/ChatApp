@@ -9,7 +9,7 @@
     android:layout_marginBottom="10dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
+        android:id="@+id/imageViewReceived"
         app:civ_border_width="0.5dp"
         app:civ_border_color="@color/colorAccent"
         android:layout_width="60dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewReceived"
         android:padding="10dp"
         android:textColor="@android:color/white"
         android:background="@drawable/pink_button"
@@ -29,8 +29,8 @@
         android:layout_marginStart="15dp"
         android:text="Received Message"
         android:maxWidth="240dp"
-        app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
-        app:layout_constraintStart_toEndOf="@+id/circleImageView"
-        app:layout_constraintTop_toTopOf="@+id/circleImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewReceived"
+        app:layout_constraintStart_toEndOf="@+id/imageViewReceived"
+        app:layout_constraintTop_toTopOf="@+id/imageViewReceived"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
