@@ -33,5 +33,3 @@ v
 Fapp/src/main/java/com/alicja/chatapp/ui/message/NewMessagesActivity.kt,3\a\3a909928398d0171d8d9e4df7fd1a48ebf6a647c
 o
 ?app/src/main/java/com/alicja/chatapp/ui/message/ChatActivity.kt,c\9\c9d535fe30fece6c4955c48f258ef8e32bee31a8
-x
-Happ/src/main/java/com/alicja/chatapp/delegators/adapter/rows/ChatItem.kt,5\4\54bd140567ec0935a89d43087c773029ed41411e

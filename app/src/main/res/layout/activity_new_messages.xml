@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.message.NewMessagesActivity">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_newMessage"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    android:id="@+id/recyclerView_newMessages"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
 </LinearLayout>

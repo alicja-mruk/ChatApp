@@ -48,14 +48,23 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun sendMessage(userTo: User?) {
+        val fromId = ChatProperties.getCurrentUserId()
+        val toId = userTo?.uid
+
         val messageText = enterMessageEditText.text.toString()
         val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
+        val latestMessageReference = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
+        val latestMessageToReference = FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")
 
         if(userTo?.uid == null) return
 
         val chatMessage = ChatMessage(reference.key!!, messageText, ChatProperties.getCurrentUserId()!!,
             userTo.uid, ChatProperties.getTimeStamp())
+
         reference.setValue(chatMessage)
+        latestMessageReference.setValue(chatMessage)
+        latestMessageToReference.setValue(chatMessage)
+
             .addOnSuccessListener {
                 Log.d(TAG, "Successfully saved a message to the database")
                 enterMessageEditText.text.clear()
@@ -79,10 +88,11 @@ class ChatActivity : AppCompatActivity() {
                     if (chatMessage.fromId == ChatProperties.getCurrentUserId() && chatMessage.toId == userTo.uid) {
                         adapter.add(ChatSendItem(chatMessage.text, currentUserPhotoUrl))
                     }
+                    else if (chatMessage.toId  == ChatProperties.getCurrentUserId() && chatMessage.fromId == userTo.uid) {
+                        adapter.add(ChatReceivedItem(chatMessage.text, userTo.photoUrl))
+                    }
                 }
-                else {
-                    adapter.add(ChatReceivedItem(chatMessage!!.text, userTo!!.photoUrl))
-                }
+                recyclerView_chat.scrollToPosition(adapter.itemCount - 1)
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {}
@@ -92,13 +102,13 @@ class ChatActivity : AppCompatActivity() {
         })
     }
 
-    fun setCurrentUserPhotoUrl(){
+    private fun setCurrentUserPhotoUrl(){
         val reference : DatabaseReference = FirebaseDatabase.getInstance().getReference("/users")
             .child(FirebaseAuth.getInstance().uid!!)
 
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
-                Log.d(ChatActivity.TAG, "Successfully retrieved current photo url")
+                Log.d(TAG, "Successfully retrieved current photo url")
                 val user : User? = p0.getValue(User::class.java)
 
                 if (user != null) {

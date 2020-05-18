@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.alicja.chatapp.R
+import com.alicja.chatapp.data.chat.ChatProperties
 import com.alicja.chatapp.delegators.StartActivityHelper
 import com.alicja.chatapp.delegators.adapter.rows.UserItem
 import com.alicja.chatapp.model.User
@@ -47,14 +48,12 @@ class NewMessagesActivity : AppCompatActivity() {
                 p0.children.forEach {
                     Log.d(TAG, "Fetching users from the database:  $it")
                     val user = it.getValue(User::class.java)
-                    if(user !=null){
-                        adapter.add(
-                            UserItem(user)
-                        )
+                    if(user !=null && user.uid!=ChatProperties.getCurrentUserId()){
+                        adapter.add(UserItem(user))
                     }
                 }
                 adapterOnItemClickListener(adapter)
-                recyclerView_newMessage.adapter = adapter
+                recyclerView_newMessages.adapter = adapter
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -62,6 +61,7 @@ class NewMessagesActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun startChatActivity(userItem: UserItem) {
         StartActivityHelper(this, ChatActivity::class.java).startNewChatActivity(USER_KEY, userItem)
         finish()
