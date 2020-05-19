@@ -1,5 +1,5 @@
 ---
-
+Chat App created with the use of Firebase Auth, Database and Storage.
 
 ---
 
