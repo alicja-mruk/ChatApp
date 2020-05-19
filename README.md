@@ -34,12 +34,12 @@
 <li>
 <p>)
 
-4. Choosing a user to message to<img src="
-5.![image](https://user-images.githubusercontent.com/45905489/82338990-d2228d00-99ed-11ea-8de5-a51c5488ea09.png" alt="image"></p>
+4. Choosing a user to message to
+![image](https://user-images.githubusercontent.com/45905489/82338990-d2228d00-99ed-11ea-8de5-a51c5488ea09.png" alt="image"></p>
 </li>
 </ol>)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcwNzQzNjkxOV19
+eyJoaXN0b3J5IjpbLTIwNDk4NTMxODJdfQ==
 -->
