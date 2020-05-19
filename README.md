@@ -1,6 +1,10 @@
 ---
 Chat App created with the use of Firebase Auth, Database and Storage.
 
+Libriaries used :
+- GroupieRecyclerView
+- Picasso
+
 ---
 
 <h1 id="chatapp">ChatApp</h1>
