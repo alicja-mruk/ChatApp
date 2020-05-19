@@ -1,13 +1,14 @@
 
 
 <h1 id="chatapp">ChatApp</h1>
-<h3 id="demo">Demo</h3>
+
 <h5>Chat App created with the use of Firebase Auth, Database and Storage.</h5>
 
 Libriaries used :
 - GroupieRecyclerView
 - Picasso
 ---
+<h3 id="demo">Demo</h3>
 <ol>
 <li>Register and Login Screen<br>
 <img src="https://user-images.githubusercontent.com/45905489/82341492-c71d2c00-99f0-11ea-92c1-569766e4e570.png" alt="image"></br>
